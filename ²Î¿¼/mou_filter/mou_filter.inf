@@ -1,0 +1,92 @@
+;;;
+;;; Mou_filter
+;;;
+;;;
+;;; Copyright (c) 2000, Microsoft Corporation
+;;;
+
+[Version]
+signature  	= "$Windows NT$"
+ClassGUID={4D36E96B-E325-11CE-BFC1-08002BE10318}
+Class=Keyboard
+Provider 	= %Msft%
+DriverVer 	= 08/28/2000,1.0.0.1
+CatalogFile     = mou_filter.cat                                   ; A CatalogFile entry is required for a WHQL signature.
+                                                                ; The actual catalog file will be provided by WHQL.  The
+                                                                ; catalog file for this sample is not provided for use.
+[DestinationDirs]
+DefaultDestDir	         = 12
+Mou_filter.DriverFiles      = 12 			;%windir%\system32\drivers
+
+[SourceDisksNames]
+1 = %Disk1%
+
+[SourceDisksFiles]
+mou_filter.sys = 1
+
+;;
+;; Default install sections
+;;
+
+[DefaultInstall]
+OptionDesc          = %Mou_filterServiceDesc%
+CopyFiles           = Mou_filter.DriverFiles
+
+[DefaultInstall.Services]
+AddService          = %Mou_filterServiceName%,,Mou_filter.Service
+AddReg              = Mou_filter.AddRegistry
+
+;;
+;; Default uninstall sections
+;;
+
+[DefaultUninstall]
+DelFiles   = Mou_filter.DriverFiles
+DelReg     = Mou_filter.DelRegistry
+
+[DefaultUninstall.Services]
+DelService = Mou_filter,0x200		; Flags note to stop service first
+
+;
+; Services Section
+;
+
+[Mou_filter.Service]
+DisplayName      = %Mou_filterServiceName%
+Description      = %Mou_filterServiceDesc%
+ServiceBinary    = %12%\Mou_filter.sys		;%windir%\system32\drivers\Mou_filter.sys
+ServiceType      = 1					;KERNEL_DRIVER
+StartType        = 2					;AUTO_START
+ErrorControl     = 1					;SERVICE_ERROR_NORMAL
+LoadOrderGroup   = "Pointer Port"
+AddReg			 = Mou_filter.AddRegistry
+
+;
+; Registry Modifications
+;
+
+[Mou_filter.AddRegistry]
+HKLM,%Mou_filterRegistry%,%Mou_filterDebugFlags%,0x00010001 ,0
+
+[Mou_filter.DelRegistry]
+HKLM,%Mou_filterRegistry%,%Mou_filterDebugFlags%
+
+;
+; Copy Files
+;
+
+[Mou_filter.DriverFiles]
+Mou_filter.sys
+
+;;
+;; String Section
+;;
+
+[Strings]
+Msft	            = "Corporation"
+Mou_filterServiceDesc  = "Mou_filter Filter Driver"
+Mou_filterServiceName  = "Mou_filter"
+Mou_filterRegistry     = "system\currentcontrolset\services\Mou_filter"
+Mou_filterDebugFlags   = "DebugFlags"
+Disk1               = "Mou_filter Source Media"
+

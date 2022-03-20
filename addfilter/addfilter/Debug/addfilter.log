@@ -1,0 +1,9 @@
+﻿addfilter.obj : error LNK2019: 无法解析的外部符号 __imp__SetupDiEnumDeviceInfo@12，函数 _wmain 中引用了该符号
+addfilter.obj : error LNK2019: 无法解析的外部符号 __imp__SetupDiDestroyDeviceInfoList@4，函数 _wmain 中引用了该符号
+addfilter.obj : error LNK2019: 无法解析的外部符号 __imp__SetupDiGetClassDevsW@16，函数 _wmain 中引用了该符号
+addfilter.obj : error LNK2019: 无法解析的外部符号 __imp__SetupDiCallClassInstaller@12，函数 _RestartDevice 中引用了该符号
+addfilter.obj : error LNK2019: 无法解析的外部符号 __imp__SetupDiGetDeviceRegistryPropertyW@28，函数 _GetDeviceRegistryProperty 中引用了该符号
+addfilter.obj : error LNK2019: 无法解析的外部符号 __imp__SetupDiSetDeviceRegistryPropertyW@20，函数 _AddFilterDriver 中引用了该符号
+addfilter.obj : error LNK2019: 无法解析的外部符号 __imp__SetupDiGetDeviceInstallParamsW@12，函数 _RestartDevice 中引用了该符号
+addfilter.obj : error LNK2019: 无法解析的外部符号 __imp__SetupDiSetClassInstallParamsW@16，函数 _RestartDevice 中引用了该符号
+C:\Users\86150\source\repos\addfilter\Debug\addfilter.exe : fatal error LNK1120: 8 个无法解析的外部命令

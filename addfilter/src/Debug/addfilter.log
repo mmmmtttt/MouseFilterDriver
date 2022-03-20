@@ -1,0 +1,4 @@
+﻿  Building 'addfilter' with toolset 'WindowsApplicationForDrivers10.0' and the 'Desktop' target platform.
+  addfilter.c
+C:\Users\86150\Desktop\addfilter\src\addfilter.c(419,1): error C2220: 以下警告被视为错误
+C:\Users\86150\Desktop\addfilter\src\addfilter.c(419,1): warning C4047: “初始化”:“LPTSTR”与“int”的间接级别不同

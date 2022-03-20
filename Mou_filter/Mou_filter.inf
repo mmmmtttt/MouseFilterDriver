@@ -1,0 +1,46 @@
+[Version]
+Signature="$Windows NT$"
+ClassGUID={4D36E96F-E325-11CE-BFC1-08002BE10318}
+Class=Mouse
+Provider=%OrganizationName%
+DriverVer = 01/23/2022,19.22.38.991
+CatalogFile=Mou_filter.cat
+
+[DefaultInstall]
+CopyFiles = @Mou_filter.sys
+Addreg    = Mou_filter.AddReg
+
+[DefaultInstall.NT]
+CopyFiles = @Mou_filter.sys
+Addreg    = Mou_filter.AddReg
+
+[DestinationDirs]
+DefaultDestDir=12 ; DIRID_DRIVERS
+
+[Mou_filter.AddReg]
+HKLM, System\CurrentControlSet\Control\Class\{4D36E96F-E325-11CE-BFC1-08002BE10318}, UpperFilters, 0x00010008, Mou_filter
+
+[DefaultInstall.Services]
+AddService = Mou_filter, , Mou_filter.Service.Install
+
+[DefaultInstall.NT.Services]
+AddService = Mou_filter, , Mou_filter.Service.Install
+
+[Mou_filter.Service.Install]
+DisplayName    = %service_desc%
+ServiceType    = 1 ;SERVICE_KERNEL_DRIVER
+StartType      = 3 ; 1-SERVICE_SYSTEM_START;3-DEMAND
+ErrorControl   = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\Mou_filter.sys
+
+[SourceDisksFiles]
+Mou_filter.sys = 1
+
+[SourceDisksNames]
+1 = %disk_description%,,,
+
+[Strings] 
+OrganizationName = "mt"
+service_desc = "Mouse Filter Service"
+Mou_filterRegistry     = "system\currentcontrolset\services\Mou_filter"
+disk_description = "Mouse Filter Device"

@@ -1,0 +1,12 @@
+TARGETNAME=mou_filter
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+DRIVERTYPE=FS
+
+!if $(FREEBUILD)
+LINKER_FORCE_NO_DBG_SECTION=1
+!endif
+
+SOURCES=mou_filter.c   \
+        mou_filter.rc
+
